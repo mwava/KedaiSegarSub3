@@ -1,0 +1,32 @@
+{
+    "name": "Kedai Segar",
+    "gcm_sender_id": "517331275832",
+    "short_name": "Kedai Segar",
+    "description": "Kedai Segar Nobar Football",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#333333",
+    "theme_color": "#333333",
+    "icons": [
+        {
+            "src": "/asset/android-icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/asset/android-icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/asset/android-icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/asset/kedai.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
