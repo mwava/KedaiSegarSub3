@@ -15,8 +15,7 @@ function saveForLater(team) {
             return tx.complete;
         })
         .then(function () {
-            M.toas({html: 'Tim Favoritemu sekarang bertambah Yeay!!!!.'});
-            alert("Tim Favoritemu sekarang bertambah Yeay!!!!.")
+            M.toast({html: 'Tim Favoritemu sekarang bertambah Yeay!!!!.'});
         });
 }
 function getAll() {
@@ -56,6 +55,7 @@ function deleteById(id) {
             })
             .then(team => {
                 resolve(team);
+                M.toast({html: 'Kenapa anda hapus???.'});
             });
     });
 }

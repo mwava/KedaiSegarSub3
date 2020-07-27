@@ -2,9 +2,21 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 //pendaftaran cache
 if(workbox){
     console.log("Success full");
-
     //cache configuration
 
+      workbox.routing.registerRoute(
+        /^https:\/\/api\.football-data\.org\/v2/,
+        workbox.strategies.staleWhileRevalidate({
+            cacheName: 'api-football'
+        })
+     );
+     workbox.routing.registerRoute(
+        /^https:\/\/upload\.wikimedia\.org\/wikipedia/,
+        workbox.strategies.staleWhileRevalidate({
+            cacheName: 'api-football-flag'
+        })
+     );
+  
     workbox.precaching.precacheAndRoute([
         //outdoor
         {
@@ -67,8 +79,8 @@ if(workbox){
         },
         //END Style
     ])
-    
 
+/*
     workbox.routing.registerRoute(
         /\.(?:js|css)$/,
         new workbox.strategies.StaleWhileRevalidate({
@@ -101,7 +113,13 @@ if(workbox){
             cacheName:'Api football'
         })
       );
-
+      workbox.routing.registerRoute(
+        ({url}) => url.origin,
+        new workbox.strategies
+           
+     )
+     */
+ 
 }else{
     console.log("Crash")
 }

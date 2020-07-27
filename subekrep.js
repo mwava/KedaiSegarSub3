@@ -25,6 +25,7 @@ function requestPermission() {
                 console.error("Pengguna menutup kotak dialog permintaan ijin.");
                 return;
             }
+    navigator.serviceWorker.ready.then(() => {
             if (('PushManager' in window)) {
                 navigator.serviceWorker.getRegistration().then(function (registration) {
                     registration.pushManager.subscribe({
@@ -41,6 +42,7 @@ function requestPermission() {
                     });
                 });
             }
+          });
         });
     }
 }
