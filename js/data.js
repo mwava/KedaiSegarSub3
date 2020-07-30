@@ -70,6 +70,11 @@ function getCompetitions() {
                     </div>
                 `
                         data.standings[0].table.forEach(function (result) {
+
+
+
+
+
                             standingsHTML += `
                                     <style>
                                         .nameTim{
@@ -83,7 +88,7 @@ function getCompetitions() {
                                     <div class="row">
                                     <a  href="./infoTeam.html?id=${result.team.id}" style=" text-decoration: none; color:black;">
                                         <div class="col s1 m1"><p>${result.position}</p></div>
-                                        <div class="col s2 m2"><img style="width:40px; margin-left:20px;" src="${result.team.crestUrl}"></div>
+                                        <div class="col s2 m2"><img style="width:40px; margin-left:20px;" src="${result.team.crest}"></div>
                                         <div class="col s9 m9">
                                         <p class="nameTim">${result.team.name}</p>
                                         </div>
@@ -119,14 +124,14 @@ function getCompetitions() {
 
 
 
-const fetchApi = url =>{
-    return fetch(url,{
-        headers: {
-            "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
-        }
-    });
-};
-//diganti expression
+    const fetchApi = url => {
+        return fetch(url, {
+            headers: {
+                "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
+            }
+        });
+    };
+    //diganti expression
     fetch(base_url + 'competitions/2003/standings', {
         headers: {
             "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
@@ -384,7 +389,7 @@ function getSavedTeams() {
 
         // Sisipkan komponen card ke dalam elemen dengan id #body-content
         document.getElementById("teams").innerHTML = teamsHTML;
-       
+
     });
 }
 
@@ -443,7 +448,7 @@ function getSavedTeamById() {
         })
         // Sisipkan komponen card ke dalam elemen dengan id #content
         document.getElementById("infoTeam").innerHTML = teamHTML;
-        
+
     });
 }
 
