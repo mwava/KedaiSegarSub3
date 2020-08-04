@@ -1,5 +1,13 @@
 const base_url = "https://api.football-data.org/v2/";
 // Blok kode yang akan di panggil jika fetch berhasil
+const Xaut={
+    headers: {
+        "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
+    }
+}
+const fetchApi = url => {
+    return fetch(url,Xaut);
+};
 function status(response) {
     if (response.status !== 200) {
         console.log("Error : " + response.status);
@@ -70,16 +78,18 @@ function getCompetitions() {
                     </div>
                 `
                         data.standings[0].table.forEach(function (result) {
-
-
-
-
-
                             standingsHTML += `
                                     <style>
                                         .nameTim{
                                             position:absolute;
                                             left:30px;
+                                            margin-bottom:30px;
+                                        }
+                                        @media only screen and (max-width:1000px)
+                                        {
+                                            .nameTim{
+                                               margin-left:10px!important;
+                                            }
                                         }
                                     </style>
                                  <div class="row" >
@@ -89,9 +99,10 @@ function getCompetitions() {
                                     <a  href="./infoTeam.html?id=${result.team.id}" style=" text-decoration: none; color:black;">
                                         <div class="col s1 m1"><p>${result.position}</p></div>
                                         <div class="col s2 m2"><img style="width:40px; margin-left:20px;" src="${result.team.crest}"></div>
-                                        <div class="col s9 m9">
-                                        <p class="nameTim">${result.team.name}</p>
+                                        <div class="col s9 m9 name">
+                                        <p class="nameTim" style="margin-left:160px;">${result.team.name}</p>
                                         </div>
+                                       
                                         </a>
                                     </div>
                                     
@@ -124,19 +135,9 @@ function getCompetitions() {
 
 
 
-    const fetchApi = url => {
-        return fetch(url, {
-            headers: {
-                "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
-            }
-        });
-    };
+    const cUrl=base_url + 'competitions/2003/standings'
     //diganti expression
-    fetch(base_url + 'competitions/2003/standings', {
-        headers: {
-            "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
-        }
-    })
+    fetchApi(cUrl,Xaut)
         .then(status)
         .then(json)
         .then(data => {
@@ -187,7 +188,15 @@ function getCompetitions() {
                 .nameTim{
                     position:absolute;
                     left:30px;
+                    
                 }
+                @media only screen and (max-width:1000px)
+                                        {
+                                            .nameTim{
+                                                margin-left:10px!important;
+                                            }
+                                        }
+               
             </style>
                      <div class="row" >
                      <div class="col s6 m6">
@@ -196,9 +205,10 @@ function getCompetitions() {
                         <a  href="./infoTeam.html?id=${result.team.id}" style=" text-decoration: none; color:black;">
                             <div class="col s1 m1"><p>${result.position}</p></div>
                             <div class="col s2 m2"><img style="width:40px; margin-left:20px;" src="${result.team.crestUrl}"></div>
-                            <div class="col s9 m9">
-                            <p class="nameTim">${result.team.name}</p>
+                            <div class="col s9 m9 name">
+                            <p class="nameTim" style="margin-left:160px;">${result.team.name}</p>
                             </div>
+                            
                             </a>
                         </div>
                         
@@ -293,12 +303,8 @@ function getTeamById() {
             });
         }
 
-
-        fetch(base_url + 'teams/' + idParam, {
-            headers: {
-                "X-Auth-Token": "c8a3d0bf64144b7f8dd5dd810ac6095e"
-            }
-        })
+        const cUrl=base_url + 'teams/' + idParam
+        fetch(cUrl,Xaut)
             .then(status)
             .then(json)
             .then(data => {

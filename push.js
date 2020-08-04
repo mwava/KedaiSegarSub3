@@ -25,13 +25,6 @@ function payloads (){
         'body': 'Ini adalah konten notifikasi dengan gambar badge.',
         'badge': './asset/kedai.png'
     };
-    if (Notification.permission === 'granted') {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification(title, options);
-        });
-    } else {
-        console.error('Fitur notifikasi tidak diijinkan.');
-    }
 }
 
 const options = {
